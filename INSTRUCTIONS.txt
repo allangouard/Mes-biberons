@@ -1,0 +1,25 @@
+MES BIBERONS — INSTALLATION PWA
+
+1. Décompresse le ZIP. Dans ton dépôt GitHub Mes-biberons, ajoute à la RACINE (à côté de index.html) :
+   manifest.json, sw.js, icon-192.png, icon-512.png
+
+2. Modifie index.html sur GitHub. Dans la section <head>, AVANT </head>, ajoute :
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#5d82e8">
+<link rel="apple-touch-icon" href="./icon-192.png">
+
+3. Juste AVANT </body>, ajoute :
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('./sw.js').catch(console.error);
+  });
+}
+</script>
+
+4. Enregistre les modifications (Commit changes). Attends le déploiement GitHub Pages.
+5. Ouvre https://allangouard.github.io/Mes-biberons/ dans Chrome sur Android, puis menu ⋮ > Ajouter à l'écran d'accueil > Installer (si proposé).
+
+IMPORTANT : ne remplace PAS ton index.html existant, ne modifie PAS Firebase.
+L'installation PWA dépend du navigateur et d'autres critères ; elle n'est pas garantie.
+Le mode hors connexion pour l'historique Firebase n'est PAS activé par ces fichiers.
